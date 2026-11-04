@@ -1,0 +1,54 @@
+SPENDO PROJECT SCAFFOLD
+======================
+
+This file documents the command originally used to create this repository with
+Better-T-Stack. Run it from the parent directory where you want the `spendo`
+project directory to be created. It creates the application structure and
+installs its dependencies.
+
+Selected options
+----------------
+
+- Project name: `spendo`
+- Frontend: `native-uniwind` — a native mobile app styled with Uniwind
+- Backend: `hono` — Hono handles the server-side HTTP API
+- Runtime and package manager: `bun`
+- API option: `none` — no additional API-generation option
+- Authentication: `better-auth`
+- Payments: `none`
+- Database: `postgres`, using `drizzle` as the ORM
+- Database setup: `supabase`
+- Deployment targets: none selected for web or server
+- Monorepo tooling: `turborepo`
+- Examples: none selected
+- Git: initialize a Git repository
+- Install: install dependencies as part of scaffolding
+
+Scaffold command
+----------------
+
+```sh
+cd ~/Developer/Projects
+
+bun create better-t-stack@latest spendo \
+  --frontend native-uniwind \
+  --backend hono \
+  --runtime bun \
+  --api none \
+  --auth better-auth \
+  --payments none \
+  --database postgres \
+  --orm drizzle \
+  --db-setup supabase \
+  --package-manager bun \
+  --git \
+  --web-deploy none \
+  --server-deploy none \
+  --install \
+  --addons turborepo \
+  --examples none
+```
+
+The options above describe the initial scaffold choices; they do not imply that
+every integration is already configured for production. See the repository
+README and the app/package environment schemas for the current setup steps.
