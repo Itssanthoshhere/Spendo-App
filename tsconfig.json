@@ -1,0 +1,3 @@
+{
+  "extends": "@spendo/config/tsconfig.base.json"
+}
