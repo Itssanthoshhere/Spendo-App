@@ -1,31 +1,42 @@
-SPENDO PROJECT SCAFFOLD
-======================
+SPENDO PROJECT & ARCHITECTURE STATUS
+====================================
 
-This file documents the command originally used to create this repository with
-Better-T-Stack. Run it from the parent directory where you want the `spendo`
-project directory to be created. It creates the application structure and
-installs its dependencies.
+This file documents the stack options, repository configuration, and current
+integration status for the `spendo` project.
 
-Selected options
-----------------
+Selected Stack Options
+----------------------
 
 - Project name: `spendo`
-- Frontend: `native-uniwind` — a native mobile app styled with Uniwind
-- Backend: `hono` — Hono handles the server-side HTTP API
-- Runtime and package manager: `bun`
-- API option: `none` — no additional API-generation option
-- Authentication: `better-auth`
-- Payments: `none`
-- Database: `postgres`, using `drizzle` as the ORM
-- Database setup: `supabase`
-- Deployment targets: none selected for web or server
+- Frontend: `native-uniwind` (React Native 0.88.1, Expo SDK 58, Expo Router, Uniwind / HeroUI Native)
+- Backend: `hono` (Server-side HTTP API running on port 3000)
+- Runtime and package manager: `bun` (v1.3.9)
+- Authentication: `better-auth` (with Expo plugin and PostgreSQL Drizzle adapter)
+- Database: `postgres` hosted on Supabase (Pooler transaction mode on port 6543)
+- ORM: `drizzle-orm` (managed via `@spendo/db` with Drizzle Kit)
 - Monorepo tooling: `turborepo`
-- Examples: none selected
-- Git: initialize a Git repository
-- Install: install dependencies as part of scaffolding
+- Environment management: `varlock` with type generation across packages and apps
+- Version control: Git (default branch: `main`, remote: `https://github.com/Itssanthoshhere/Spendo-App.git`)
 
-Scaffold command
-----------------
+Current Integration Status
+--------------------------
+
+1. Supabase & Drizzle Database:
+   - Configured in `apps/server/.env` with Supabase pooler connection.
+   - Auth tables (`user`, `session`, `account`, `verification`) applied and verified with `drizzle-kit push`.
+   - Migration & push scripts: `bun run db:push`, `bun run db:generate`, `bun run db:migrate`.
+
+2. Mobile App (Expo & React Native):
+   - Aligned to React Native `0.88.1` to resolve native `RCTStatusBarAppearance` symbol resolution with `ExpoModulesCore`.
+   - iOS development client (`spendo.app`) compiled and installed on the iOS Simulator.
+   - Running live with Hot Module Reloading through Metro at `http://localhost:8081`.
+
+3. Backend API (Hono):
+   - Runs at `http://localhost:3000`.
+   - Connected to Better-Auth and Drizzle database service.
+
+Reproducible Scaffold Command
+-----------------------------
 
 ```sh
 cd ~/Developer/Projects
@@ -49,6 +60,16 @@ bun create better-t-stack@latest spendo \
   --examples none
 ```
 
-The options above describe the initial scaffold choices; they do not imply that
-every integration is already configured for production. See the repository
-README and the app/package environment schemas for the current setup steps.
+Daily Development Workflow
+--------------------------
+
+- Run both API server and mobile bundler:
+  `bun run dev`
+- Run only the server:
+  `bun run dev:server`
+- Run only the mobile app:
+  `bun run dev:native`
+- Sync database schema to Supabase:
+  `bun run db:push`
+- Type checking across all workspaces:
+  `./node_modules/.bin/tsc -p apps/server/tsconfig.json --noEmit`
