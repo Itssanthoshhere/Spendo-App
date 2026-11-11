@@ -30,8 +30,14 @@ Current Integration Status
    - Aligned to React Native `0.88.1` to resolve native `RCTStatusBarAppearance` symbol resolution with `ExpoModulesCore`.
    - iOS development client (`spendo.app`) compiled and installed on the iOS Simulator.
    - Running live with Hot Module Reloading through Metro at `http://localhost:8081`.
-   - Added Expo plugins and packages: `expo-image`, `expo-sharing`, `@react-native-community/datetimepicker`.
-   - Typography: `@expo-google-fonts/plus-jakarta-sans` installed for Plus Jakarta Sans font support.
+   - Core Expo plugins & native modules configured and linked:
+     * `expo-font`: custom font loader (`@expo-google-fonts/plus-jakarta-sans` loaded in `_layout.tsx`)
+     * `expo-image`: high-performance image component with SDWebImage native caching
+     * `expo-router`: file-based navigation and routing
+     * `expo-secure-store`: encrypted storage for auth sessions & secure tokens
+     * `@react-native-community/datetimepicker`: native iOS/Android date-time picker dialogs
+     * `expo-sharing`: native document/file sharing sheet
+   - Native iOS CocoaPods artifacts integrated and linked via `pod install`.
 
 3. Backend API (Hono):
    - Runs at `http://localhost:3000`.
