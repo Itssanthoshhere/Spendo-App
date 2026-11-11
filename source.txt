@@ -43,7 +43,10 @@ Current Integration Status
 
 3. Backend API (Hono):
    - Runs at `http://localhost:3000`.
+   - Structured Hono app in `apps/server/src/app.ts` exporting `AppType` for type-safe client RPC.
+   - Auth session verification middleware implemented in `apps/server/src/middleware/auth.ts`.
    - Connected to Better-Auth and Drizzle database service.
+   - Initial Drizzle migration generated in `packages/db/src/migrations/20261111181659_cold_taskmaster`.
 
 Reproducible Scaffold Command
 -----------------------------
