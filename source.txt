@@ -38,6 +38,7 @@ Current Integration Status
      * `@react-native-community/datetimepicker`: native iOS/Android date-time picker dialogs
      * `expo-sharing`: native document/file sharing sheet
    - Native iOS CocoaPods artifacts integrated and linked via `pod install`.
+   - Cashory design system theme integrated into `apps/native/global.css` with semantic color tokens, light/dark mode palettes, and HeroUI Native component styles.
 
 3. Backend API (Hono):
    - Runs at `http://localhost:3000`.
