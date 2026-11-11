@@ -24,6 +24,7 @@ Current Integration Status
 1. Supabase & Drizzle Database:
    - Configured in `apps/server/.env` with Supabase pooler connection.
    - Auth tables (`user`, `session`, `account`, `verification`) applied and verified with `drizzle-kit push`.
+   - User table extended with onboarding & profile columns (`onboarding_completed`, `country`, `phone`, `currency`).
    - Migration & push scripts: `bun run db:push`, `bun run db:generate`, `bun run db:migrate`.
 
 2. Mobile App (Expo & React Native):
