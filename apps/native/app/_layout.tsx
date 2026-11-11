@@ -15,13 +15,13 @@ import { useFonts } from "expo-font";
 import { AppThemeProvider } from "@/contexts/app-theme-context";
 
 export const unstable_settings = {
-  anchor: "(drawer)",
+  anchor: "index",
 };
 
 function StackLayout() {
   return (
     <Stack screenOptions={{}}>
-      <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen
         name="modal"
         options={{ title: "Modal", presentation: "modal" }}
